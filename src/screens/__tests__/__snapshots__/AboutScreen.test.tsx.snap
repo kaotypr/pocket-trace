@@ -35,8 +35,8 @@ exports[`screens/AboutScreen should match snapshot 1`] = `
     </Text>
     <Text>
       {
-  "APP_NAME": "Kao Expo Typescript Boilerplate",
-  "APP_ENV": "development"
+  "APP_NAME": "",
+  "APP_ENV": ""
 }
     </Text>
     <View

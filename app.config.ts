@@ -2,8 +2,8 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "kao-expo-typescript-boilerplate",
-    slug: "kao-expo-typescript-boilerplate",
+    name: "mobile-traces",
+    slug: "mobile-traces",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
