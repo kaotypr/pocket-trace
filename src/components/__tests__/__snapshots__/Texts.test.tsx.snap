@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Texts/HeadingText renders correctly 1`] = `
+<Text
+  style={
+    Object {
+      "color": "#5145a0",
+      "fontSize": 25,
+      "fontWeight": "bold",
+      "marginBottom": 3,
+    }
+  }
+>
+  Heading Text
+</Text>
+`;
+
+exports[`components/Texts/PressableText renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#5145a0",
+        },
+        undefined,
+      ]
+    }
+  >
+    Pressable Text
+  </Text>
+</View>
+`;
