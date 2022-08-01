@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/AppIcon renders correctly 1`] = `
+<RNCMaskedView>
+  <View
+    pointerEvents="none"
+    style={
+      Object {
+        "bottom": 0,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      }
+    }
+  >
+    <Image
+      source={1}
+      style={
+        Array [
+          Object {
+            "height": 50,
+            "width": 50,
+          },
+          Object {},
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#5145a0",
+          "height": 50,
+          "width": 50,
+        },
+        undefined,
+      ]
+    }
+  />
+</RNCMaskedView>
+`;
