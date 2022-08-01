@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Buttons/Button renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "marginVertical": 5,
+      "opacity": 1,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#5145a0",
+          "borderRadius": 6,
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "padding": 12,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#fafafa",
+            "fontSize": 18,
+            "fontWeight": "500",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Button
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`components/Buttons/ClearButton renders correctly 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Array [
+      false,
+      Object {
+        "marginVertical": 5,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "padding": 12,
+        },
+        undefined,
+      ]
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#5145a0",
+            "fontSize": 18,
+            "fontWeight": "500",
+            "textAlign": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      Clear Button
+    </Text>
+  </View>
+</View>
+`;
