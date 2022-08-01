@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Buttons/Button renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "flex-start",
+      "display": "flex",
+      "justifyContent": "flex-start",
+      "marginVertical": 10,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "fontSize": 16,
+        "fontWeight": "500",
+        "textAlign": "left",
+      }
+    }
+  >
+    Text Input
+  </Text>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#d4cef7",
+        "borderColor": "#5145a0",
+        "borderRadius": 6,
+        "display": "flex",
+        "flexDirection": "row",
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      autoCapitalize="none"
+      autoCorrect={false}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      placeholder="Text Input"
+      secureTextEntry={false}
+      style={
+        Object {
+          "flexDirection": "row",
+          "fontSize": 16,
+          "paddingHorizontal": 10,
+          "paddingVertical": 14,
+          "width": "90%",
+        }
+      }
+      value=""
+    />
+  </View>
+</View>
+`;
