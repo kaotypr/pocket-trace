@@ -5,11 +5,7 @@ exports[`screens/HomeScreen should match snapshot 1`] = `
   emulateUnlessSupported={true}
   style={
     Array [
-      Object {
-        "alignItems": "center",
-        "flex": 1,
-        "justifyContent": "center",
-      },
+      undefined,
       Object {
         "backgroundColor": "#232323",
       },

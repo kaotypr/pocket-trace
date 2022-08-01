@@ -2,8 +2,8 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "mobile-traces",
-    slug: "mobile-traces",
+    name: "pocket-trace",
+    slug: "pocket-trace",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
