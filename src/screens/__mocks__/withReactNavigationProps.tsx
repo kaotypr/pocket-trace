@@ -4,6 +4,7 @@ export const createTestScreenProps = (props?: object) => ({
   navigation: {
     state: { params: {} },
     dispatch: jest.fn(),
+    canGoBack: jest.fn(),
     goBack: jest.fn(),
     dismiss: jest.fn(),
     navigate: jest.fn(),

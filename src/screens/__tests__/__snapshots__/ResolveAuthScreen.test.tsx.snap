@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screens/ResolveAuthScreen should match snapshot 1`] = `
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fafafa",
+        "flex": 1,
+        "position": "relative",
+      },
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#1c1e21",
+        "justifyContent": "center",
+      },
+    ]
+  }
+>
+  <RNCMaskedView>
+    <View
+      pointerEvents="none"
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <Image
+        source={1}
+        style={
+          Array [
+            Object {
+              "height": 50,
+              "width": 50,
+            },
+            Object {},
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#d4cef7",
+            "height": 50,
+            "width": 50,
+          },
+          undefined,
+        ]
+      }
+    />
+  </RNCMaskedView>
+  <Text
+    style={
+      Object {
+        "color": "#d4cef7",
+        "fontSize": 25,
+        "fontWeight": "bold",
+        "marginBottom": 3,
+        "marginTop": 10,
+      }
+    }
+  >
+    Pocket Trace
+  </Text>
+</RCTSafeAreaView>
+`;

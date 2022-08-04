@@ -32,7 +32,8 @@ exports[`screens/AboutScreen should match snapshot 1`] = `
     <Text>
       {
   "APP_NAME": "Pocket Trace",
-  "APP_ENV": "development"
+  "APP_ENV": "development",
+  "APP_API_BASE_URL": "http://localhost:3000"
 }
     </Text>
     <View
