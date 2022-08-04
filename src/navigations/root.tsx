@@ -4,10 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { RootStackParamList } from "@@types/navigations/root";
 import Fallback from "@components/Fallback";
 import { useAuthContext } from "@contexts/authContext";
-import AboutScreen from "@screens/AboutScreen";
-import HomeScreen from "@screens/HomeScreen";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
+import AppNavigation from "./app";
 import AuthNavigation from "./auth";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -19,14 +18,11 @@ const RootNavigation = () => {
     <NavigationContainer fallback={<Fallback />}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {authState.isSignedIn ? (
-          <>
-            <Stack.Screen
-              name={SCREEN_NAMES.HOME}
-              component={HomeScreen}
-              options={{ animation: "slide_from_bottom" }}
-            />
-            <Stack.Screen name={SCREEN_NAMES.ABOUT} component={AboutScreen} />
-          </>
+          <Stack.Screen
+            name={SCREEN_NAMES.APP_SCENE}
+            component={AppNavigation}
+            options={{ animation: "slide_from_bottom" }}
+          />
         ) : (
           <Stack.Screen
             name={SCREEN_NAMES.AUTH_SCENE}
