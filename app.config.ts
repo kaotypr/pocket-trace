@@ -31,7 +31,8 @@ export default {
     },
     extra: {
       APP_NAME: process.env.APP_NAME || "",
-      APP_ENV: process.env.APP_ENV || ""
+      APP_ENV: process.env.APP_ENV || "",
+      APP_API_BASE_URL: process.env.APP_API_BASE_URL || ""
     }
   }
 };
