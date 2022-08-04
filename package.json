@@ -1,5 +1,5 @@
 {
-  "name": "mobile-traces",
+  "name": "pocket-trace",
   "version": "1.0.0",
   "main": "./src/app/index.ts",
   "scripts": {
@@ -31,6 +31,7 @@
     ]
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.17.3",
     "@react-native-masked-view/masked-view": "0.2.6",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",

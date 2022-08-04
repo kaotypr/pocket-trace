@@ -5,11 +5,7 @@ exports[`screens/AboutScreen should match snapshot 1`] = `
   emulateUnlessSupported={true}
   style={
     Array [
-      Object {
-        "alignItems": "center",
-        "flex": 1,
-        "justifyContent": "center",
-      },
+      undefined,
       Object {
         "backgroundColor": "#919ff0",
       },
@@ -35,8 +31,9 @@ exports[`screens/AboutScreen should match snapshot 1`] = `
     </Text>
     <Text>
       {
-  "APP_NAME": "",
-  "APP_ENV": ""
+  "APP_NAME": "Pocket Trace",
+  "APP_ENV": "development",
+  "APP_API_BASE_URL": "http://localhost:3000"
 }
     </Text>
     <View

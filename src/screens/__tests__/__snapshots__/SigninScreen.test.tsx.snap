@@ -1,0 +1,355 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`screens/SigninScreen should match snapshot 1`] = `
+<RNCSafeAreaView
+  edges={
+    Array [
+      "bottom",
+      "left",
+      "right",
+      "top",
+    ]
+  }
+  style={
+    Object {
+      "backgroundColor": "#fafafa",
+      "flex": 1,
+      "position": "relative",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "display": "flex",
+        "paddingHorizontal": 20,
+        "paddingVertical": 30,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "marginBottom": 30,
+        }
+      }
+    >
+      <RNCMaskedView>
+        <View
+          pointerEvents="none"
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <Image
+            source={1}
+            style={
+              Array [
+                Object {
+                  "height": 50,
+                  "width": 50,
+                },
+                Object {},
+              ]
+            }
+          />
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "backgroundColor": "#5145a0",
+                "height": 50,
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        />
+      </RNCMaskedView>
+      <Text
+        style={
+          Object {
+            "color": "#5145a0",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "marginBottom": 3,
+          }
+        }
+      >
+        Pocket Trace
+      </Text>
+    </View>
+    <View>
+      <Text
+        style={
+          Object {
+            "color": "#5145a0",
+            "fontSize": 20,
+            "fontWeight": "bold",
+            "marginBottom": 10,
+          }
+        }
+      >
+        Sign In
+      </Text>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-start",
+            "display": "flex",
+            "justifyContent": "flex-start",
+            "marginVertical": 10,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": "500",
+              "textAlign": "left",
+            }
+          }
+        >
+          Email
+        </Text>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#d4cef7",
+              "borderColor": "#5145a0",
+              "borderRadius": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <TextInput
+            autoCapitalize="none"
+            autoComplete="email"
+            autoCorrect={false}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="Email"
+            secureTextEntry={false}
+            style={
+              Object {
+                "flexDirection": "row",
+                "fontSize": 16,
+                "paddingHorizontal": 10,
+                "paddingVertical": 14,
+                "width": "90%",
+              }
+            }
+            value=""
+          />
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-start",
+            "display": "flex",
+            "justifyContent": "flex-start",
+            "marginVertical": 10,
+            "width": "100%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontSize": 16,
+              "fontWeight": "500",
+              "textAlign": "left",
+            }
+          }
+        >
+          Password
+        </Text>
+        <View
+          style={
+            Object {
+              "backgroundColor": "#d4cef7",
+              "borderColor": "#5145a0",
+              "borderRadius": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "width": "100%",
+            }
+          }
+        >
+          <TextInput
+            autoCapitalize="none"
+            autoComplete="password"
+            autoCorrect={false}
+            defaultValue=""
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="Password"
+            secureTextEntry={true}
+            style={
+              Object {
+                "flexDirection": "row",
+                "fontSize": 16,
+                "paddingHorizontal": 10,
+                "paddingVertical": 14,
+                "width": "90%",
+              }
+            }
+            value=""
+          />
+        </View>
+      </View>
+      <View
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "marginVertical": 5,
+            "opacity": 1,
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "#5145a0",
+                "borderRadius": 6,
+                "display": "flex",
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "padding": 12,
+              },
+              undefined,
+            ]
+          }
+        >
+          <Text />
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#fafafa",
+                  "fontSize": 18,
+                  "fontWeight": "500",
+                  "textAlign": "center",
+                },
+                Object {
+                  "fontWeight": "bold",
+                },
+              ]
+            }
+          >
+            Sign In
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+          }
+        }
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#5145a0",
+                },
+                Object {
+                  "fontWeight": "bold",
+                  "marginVertical": 10,
+                },
+              ]
+            }
+          >
+            Forgot Password ?
+          </Text>
+        </View>
+        <Text>
+          or
+        </Text>
+        <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#5145a0",
+                },
+                Object {
+                  "fontWeight": "bold",
+                  "marginVertical": 10,
+                },
+              ]
+            }
+          >
+            Create Account
+          </Text>
+        </View>
+      </View>
+    </View>
+  </View>
+</RNCSafeAreaView>
+`;

@@ -67,6 +67,57 @@ exports[`screens/HomeScreen should match snapshot 1`] = `
         see about screen ?
       </Text>
     </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginVertical": 5,
+          "opacity": 1,
+        }
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#5145a0",
+              "borderRadius": 6,
+              "display": "flex",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 12,
+            },
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#fafafa",
+                "fontSize": 18,
+                "fontWeight": "500",
+                "textAlign": "center",
+              },
+              undefined,
+            ]
+          }
+        >
+          Sign out
+        </Text>
+      </View>
+    </View>
   </View>
 </RCTSafeAreaView>
 `;
