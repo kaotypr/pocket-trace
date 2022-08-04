@@ -10,5 +10,5 @@ export enum SCREEN_NAMES {
   TRACK_LIST = "Track List",
   TRACK_DETAIL = "Track Detail",
   TRACK_CREATE = "Track Create",
-  ACCOUNT = "ACCOUNT"
+  ACCOUNT = "Account"
 }
