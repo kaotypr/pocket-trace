@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     fontSize: 22
   },
   inactive: {
-    color: COLOR_LIGHT.LIGHT_PRIMARY,
+    color: COLOR_LIGHT.TRANSPARENT_PRIMARY,
     fontSize: 20
   }
 });

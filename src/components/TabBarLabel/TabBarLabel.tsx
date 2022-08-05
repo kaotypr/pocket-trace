@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   inactive: {
-    color: COLOR_LIGHT.LIGHT_PRIMARY,
+    color: COLOR_LIGHT.TRANSPARENT_PRIMARY,
     fontSize: 12
   }
 });
