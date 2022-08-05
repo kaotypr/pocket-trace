@@ -5,7 +5,7 @@ import {
   LocationSubscription,
   LocationObject
 } from "expo-location";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { ILocationState, useLocationContext } from "@contexts/locationContext";
 import {
@@ -19,8 +19,9 @@ const useLocation = () => {
     setLocationState: setLocationContextState,
     resetLocationState
   } = useLocationContext();
+  const [locationSubsriber, setLocationSubscriber] = useState<LocationSubscription | null>(null);
+  const [isRecording, setIsRecording] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined | null>();
-  const locationSubsriber = useRef<LocationSubscription | undefined>();
 
   const setLocationState = (location: LocationObject, shouldRecord = false) => {
     if (shouldRecord) {
@@ -50,18 +51,44 @@ const useLocation = () => {
         },
         (location) => setLocationState(location, shouldRecord)
       );
-      if (locationSubsriber.current) {
-        locationSubsriber.current = subscriber;
-      }
+      setLocationSubscriber(subscriber);
     } catch (error) {
       setError(error as Error);
     }
   };
 
+  const stopWatching = () => {
+    if (locationSubsriber) {
+      locationSubsriber.remove();
+      setLocationSubscriber(null);
+    }
+  };
+
+  const startRecording = () => {
+    // remove location subsriber without recording callback
+    stopWatching();
+    // start watching with recording callback
+    startWatching(true);
+    setIsRecording(true);
+  };
+
+  const stopRecording = () => {
+    // stop watching
+    stopWatching();
+    setIsRecording(false);
+    // watching location without recording, so it still updating current location indicator
+    startWatching();
+  };
+
   return {
     ...locationState,
+    isRecording,
+    locationSubsriber,
     error,
-    startWatching
+    startWatching,
+    stopWatching,
+    startRecording,
+    stopRecording
   };
 };
 
