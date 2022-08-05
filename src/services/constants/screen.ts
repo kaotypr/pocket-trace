@@ -6,9 +6,9 @@ export enum SCREEN_NAMES {
   SIGNIN = "Signin",
   SIGNUP = "Signup",
   APP_SCENE = "App Scene",
-  TRACKS_LIST_SCENE = "Track List Scene",
-  TRACK_LIST = "Track List",
-  TRACK_DETAIL = "Track Detail",
-  TRACK_CREATE = "Track Create",
+  TRACES_LIST_SCENE = "Trace List Scene",
+  TRACE_LIST = "Trace List",
+  TRACE_DETAIL = "Trace Detail",
+  TRACE_CREATE = "Trace Create",
   ACCOUNT = "Account"
 }
