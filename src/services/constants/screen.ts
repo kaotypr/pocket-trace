@@ -12,3 +12,8 @@ export enum SCREEN_NAMES {
   TRACE_CREATE = "Trace Create",
   ACCOUNT = "Account"
 }
+
+export const CUSTOM_HEADER_TITLE = {
+  TRACES: "Traces",
+  TRACE_CREATE: "Record"
+};
