@@ -1,0 +1,7 @@
+export const WATCH_POSITION_TIME_INTERVAL = 10000; // 10 seconds
+export const WATCH_POSITION_DISTANCE_INTERVAL = 10; // 10 meter
+export const DEFAULT_LAT_LONG_DELTA = 0.008;
+export const LAT_LONG_DELTA_ZOOM_RANGE = 0.001;
+export const MINIMUM_LAT_LONG_DELTA = 0.001;
+export const MAXIMUM_LAT_LONG_DELTA = 0.1;
+export const DEFAULT_CURRENT_LOCATION_RADIUS = 15;

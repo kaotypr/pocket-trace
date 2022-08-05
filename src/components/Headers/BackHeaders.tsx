@@ -13,7 +13,7 @@ const BackHeaders = ({ navigation }: Pick<NativeStackHeaderProps, "navigation">)
     <View style={{ zIndex: 1 }}>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
-        style={{ position: "absolute", top: 0, left: 20 }}>
+        style={{ position: "absolute", top: 10, left: 20 }}>
         <Feather name="arrow-left-circle" color={COLOR_LIGHT.PRIMARY} size={35} />
       </TouchableOpacity>
     </View>

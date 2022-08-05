@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { PureComponent, ErrorInfo, ReactNode } from "react";
-import { Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 
 import { APP_NAME } from "@services/constants/extra";
 
@@ -41,9 +41,11 @@ class ErrorBoundary extends PureComponent<IProps, IState> {
     if (hasError) {
       return (
         <View testID="error-boundary-root">
-          <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "center" }}>
-            Oops Something Went Wrong!
-          </Text>
+          <SafeAreaView>
+            <Text style={{ fontSize: 24, fontWeight: "bold", textAlign: "center" }}>
+              Oops Something Went Wrong!
+            </Text>
+          </SafeAreaView>
         </View>
       );
     }

@@ -5,7 +5,11 @@ exports[`screens/AboutScreen should match snapshot 1`] = `
   emulateUnlessSupported={true}
   style={
     Array [
-      undefined,
+      Object {
+        "backgroundColor": "#fafafa",
+        "flex": 1,
+        "position": "relative",
+      },
       Object {
         "backgroundColor": "#919ff0",
       },

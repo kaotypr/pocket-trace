@@ -8,7 +8,7 @@ import globalStyles from "@styles/_global";
 type AboutScreenParamsType = RootStackProps<SCREEN_NAMES.ABOUT>;
 
 const AboutScreen = ({ navigation }: AboutScreenParamsType) => (
-  <SafeAreaView style={[globalStyles.fullscreen, { backgroundColor: "#919ff0" }]}>
+  <SafeAreaView style={[globalStyles.screenView, { backgroundColor: "#919ff0" }]}>
     <StatusBar barStyle="dark-content" backgroundColor="#919ff0" />
     <View>
       <Text style={[globalStyles.titleText, { color: "#232323" }]}>About Screen</Text>

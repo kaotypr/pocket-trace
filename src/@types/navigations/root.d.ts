@@ -4,6 +4,7 @@ import { SCREEN_NAMES } from "@services/constants/screen";
 
 type RootStackParamList = {
   [SCREEN_NAMES.AUTH_SCENE]: undefined;
+  [SCREEN_NAMES.APP_SCENE]: undefined;
   [SCREEN_NAMES.HOME]: undefined;
   [SCREEN_NAMES.ABOUT]: undefined;
 };
