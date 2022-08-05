@@ -2,12 +2,12 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { SCREEN_NAMES } from "@services/constants/screen";
 
-type TrackListSceneStackParamList = {
-  [SCREEN_NAMES.TRACK_LIST]: undefined;
-  [SCREEN_NAMES.TRACK_DETAIL]: { id: string };
+type TraceListSceneStackParamList = {
+  [SCREEN_NAMES.TRACE_LIST]: undefined;
+  [SCREEN_NAMES.TRACE_DETAIL]: { id: string };
 };
 
-type TrackListSceneStackProps<ScreenName> = NativeStackScreenProps<
-  TrackListSceneStackParamList,
+type TraceListSceneStackProps<ScreenName> = NativeStackScreenProps<
+  TraceListSceneStackParamList,
   ScreenName
 >;

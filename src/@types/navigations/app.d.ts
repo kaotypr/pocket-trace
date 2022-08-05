@@ -3,8 +3,8 @@ import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
 type AppStackParamList = {
-  [SCREEN_NAMES.TRACKS_LIST_SCENE]: undefined;
-  [SCREEN_NAMES.TRACK_CREATE]: undefined;
+  [SCREEN_NAMES.TRACES_LIST_SCENE]: undefined;
+  [SCREEN_NAMES.TRACE_CREATE]: undefined;
   [SCREEN_NAMES.ACCOUNT]: undefined;
 };
 

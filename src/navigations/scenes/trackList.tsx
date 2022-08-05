@@ -1,18 +1,22 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { TrackListSceneStackParamList } from "@@types/navigations/scenes/trackList";
-import { TrackDetailScreen, TrackListScreen } from "@screens/TrackListScene";
+import { TraceListSceneStackParamList } from "@@types/navigations/scenes/trackList";
+import { TraceDetailScreen, TraceListScreen } from "@screens/TracesScene";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
-const TrackListSceneStack = createNativeStackNavigator<TrackListSceneStackParamList>();
+const TraceListSceneStack = createNativeStackNavigator<TraceListSceneStackParamList>();
 
-const TrackListSceneNavigation = () => {
+const TraceListSceneNavigation = () => {
   return (
-    <TrackListSceneStack.Navigator>
-      <TrackListSceneStack.Screen name={SCREEN_NAMES.TRACK_LIST} component={TrackListScreen} />
-      <TrackListSceneStack.Screen name={SCREEN_NAMES.TRACK_DETAIL} component={TrackDetailScreen} />
-    </TrackListSceneStack.Navigator>
+    <TraceListSceneStack.Navigator>
+      <TraceListSceneStack.Screen
+        name={SCREEN_NAMES.TRACE_LIST}
+        component={TraceListScreen}
+        options={{ headerShown: false }}
+      />
+      <TraceListSceneStack.Screen name={SCREEN_NAMES.TRACE_DETAIL} component={TraceDetailScreen} />
+    </TraceListSceneStack.Navigator>
   );
 };
 
-export default TrackListSceneNavigation;
+export default TraceListSceneNavigation;
