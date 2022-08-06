@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { View } from "react-native";
 
-import { TraceListSceneStackProps } from "@@types/navigations/scenes/trackList";
+import { TracesSceneProps } from "@@types/navigations/scenes/traces";
 import { Button } from "@components/Buttons";
 import Map from "@components/Map";
 import useLocation from "@hooks/useLocation";
 import { COLOR_LIGHT } from "@services/constants/color";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
-const TraceCreateScreen = (_: TraceListSceneStackProps<SCREEN_NAMES.TRACE_CREATE>) => {
+const TraceCreateScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_CREATE>) => {
   const { isRecording, stopWatching, startWatching, startRecording, stopRecording } = useLocation();
 
   useEffect(() => {
