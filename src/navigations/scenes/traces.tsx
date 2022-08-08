@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { TraceListSceneStackParamList } from "@@types/navigations/scenes/trackList";
+import { TracesSceneStackParamList } from "@@types/navigations/scenes/traces";
 import { TraceDetailScreen, TraceListScreen } from "@screens/TracesScene";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
-const TraceListSceneStack = createNativeStackNavigator<TraceListSceneStackParamList>();
+const TraceListSceneStack = createNativeStackNavigator<TracesSceneStackParamList>();
 
 const TraceListSceneNavigation = () => {
   return (

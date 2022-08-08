@@ -1,12 +1,12 @@
 import React from "react";
 
-import { TraceListSceneStackProps } from "@@types/navigations/scenes/trackList";
+import { TracesSceneProps } from "@@types/navigations/scenes/traces";
 import { Button } from "@components/Buttons";
 import { HeadingText } from "@components/Texts";
 import useAuth from "@hooks/useAuth";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
-const AccountScreen = ({}: TraceListSceneStackProps<SCREEN_NAMES.ACCOUNT>) => {
+const AccountScreen = (_: TracesSceneProps<SCREEN_NAMES.ACCOUNT>) => {
   const { signout } = useAuth();
 
   return (

@@ -17,7 +17,7 @@ import CurrentLocationIndicator from "./CurrentLocationIndicator";
 
 interface IMapProps {
   showCurrentPoint: boolean;
-  children?: JSX.Element;
+  children: JSX.Element | null;
   style?: StyleProp<ViewStyle>;
   showActionButtom?: boolean;
   actionWrapperStyle?: StyleProp<ViewStyle>;
@@ -30,24 +30,19 @@ const Map = ({
   actionWrapperStyle,
   style
 }: IMapProps) => {
-  const {
-    locationState: { current: currentPoint }
-  } = useLocationContext();
-  const initialRegion = {
-    ...(currentPoint?.coords || {}),
-    latitudeDelta: DEFAULT_LAT_LONG_DELTA,
-    longitudeDelta: DEFAULT_LAT_LONG_DELTA
-  };
-  const [region, setRegion] = useState<Region | undefined>(undefined);
+  const { locationState } = useLocationContext();
+  const [region, setRegion] = useState<Region | undefined>();
 
-  if (!currentPoint) {
+  if (!locationState || !locationState.current) {
     return <ActivityIndicator size="large" style={{ marginTop: 200 }} />;
   }
 
   const reCenter = () => {
     setRegion({
+      latitudeDelta: DEFAULT_LAT_LONG_DELTA,
+      longitudeDelta: DEFAULT_LAT_LONG_DELTA,
       ...region,
-      ...currentPoint.coords
+      ...locationState.current.coords
     });
   };
 
@@ -61,12 +56,12 @@ const Map = ({
       if (nextdelta <= MINIMUM_LAT_LONG_DELTA) {
         return {
           ...prevRegion,
-          ...currentPoint
+          ...locationState.current
         };
       }
 
       return {
-        ...currentPoint.coords,
+        ...locationState.current.coords,
         latitudeDelta: nextdelta,
         longitudeDelta: nextdelta
       };
@@ -83,12 +78,12 @@ const Map = ({
       if (nextdelta >= MAXIMUM_LAT_LONG_DELTA) {
         return {
           ...prevRegion,
-          ...currentPoint
+          ...locationState.current
         };
       }
 
       return {
-        ...currentPoint.coords,
+        ...locationState.current.coords,
         latitudeDelta: nextdelta,
         longitudeDelta: nextdelta
       };
@@ -99,14 +94,21 @@ const Map = ({
     <View style={{ flex: 1 }}>
       <MapView
         style={StyleSheet.flatten([{ flex: 1 }, style])}
-        initialRegion={initialRegion}
+        initialRegion={{
+          latitudeDelta: DEFAULT_LAT_LONG_DELTA,
+          longitudeDelta: DEFAULT_LAT_LONG_DELTA,
+          ...region,
+          ...locationState.current.coords
+        }}
         region={region}>
         {showCurrentPoint ? (
           <CurrentLocationIndicator
-            currentPoint={currentPoint}
-            radius={Math.floor(
-              region ? region.latitudeDelta * 1875 : DEFAULT_CURRENT_LOCATION_RADIUS
-            )}
+            currentPoint={locationState.current}
+            radius={
+              region
+                ? Math.floor((region?.latitudeDelta || DEFAULT_LAT_LONG_DELTA) * 1875)
+                : DEFAULT_CURRENT_LOCATION_RADIUS
+            }
           />
         ) : null}
         {children}

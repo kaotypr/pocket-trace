@@ -1,10 +1,10 @@
 import React from "react";
 
-import { TraceListSceneStackProps } from "@@types/navigations/scenes/trackList";
+import { TracesSceneProps } from "@@types/navigations/scenes/traces";
 import { HeadingText } from "@components/Texts";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
-const TraceDetailScreen = ({}: TraceListSceneStackProps<SCREEN_NAMES.TRACE_DETAIL>) => {
+const TraceDetailScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_DETAIL>) => {
   return <HeadingText type="h1">TraceDetailScreen</HeadingText>;
 };
 
