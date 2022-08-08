@@ -5,7 +5,7 @@ import TabBarIcon from "@components/TabBarIcon";
 import TabBarLabel from "@components/TabBarLabel";
 import { LocationProvider } from "@contexts/locationContext";
 import AccountScreen from "@screens/AccountScreen";
-import TraceCreateScreen from "@screens/TraceCreateScreen/TraceCreateScreen";
+import TraceCreateScreen from "@screens/TraceCreateScreen";
 import { CUSTOM_HEADER_TITLE, SCREEN_NAMES } from "@services/constants/screen";
 
 import TraceListSceneNavigation from "./scenes/traces";
