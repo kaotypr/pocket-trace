@@ -1,11 +1,21 @@
-import { useState } from "react";
-import { Modal, StyleSheet, View, TouchableWithoutFeedback, Alert } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import {
+  Modal,
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  TextInput as RNTextInput
+} from "react-native";
 
 import { Button } from "@components/Buttons";
 import { TextInput } from "@components/Inputs";
 import { HeadingText } from "@components/Texts";
 import TraceLine from "@components/TraceLine";
 import useTrace from "@hooks/useTrace";
+import { COLOR_LIGHT } from "@services/constants/color";
 import { ERROR_MESSAGE } from "@services/constants/message";
 
 interface ISaveRecordModalProps {
@@ -17,6 +27,7 @@ interface ISaveRecordModalProps {
 const SaveRecordModal = ({ isVisible, records, onRequestClose }: ISaveRecordModalProps) => {
   const [traceName, setTraceName] = useState<string>("");
   const { saveTrace, discardRecordedTraces } = useTrace();
+  const refTraceNameInput = useRef<RNTextInput>();
 
   const handleSave = async () => {
     if (records) {
@@ -34,37 +45,49 @@ const SaveRecordModal = ({ isVisible, records, onRequestClose }: ISaveRecordModa
     onRequestClose();
   };
 
+  useEffect(() => {
+    if (isVisible && refTraceNameInput.current) {
+      refTraceNameInput.current.focus();
+    }
+  }, [isVisible]);
+
   return (
     <Modal animationType="slide" transparent visible={isVisible} onRequestClose={onRequestClose}>
       <View style={styles.wrapper}>
         <TouchableWithoutFeedback onPress={onRequestClose}>
           <View style={{ flex: 1 }} />
         </TouchableWithoutFeedback>
-        <View style={styles.formCard}>
-          <HeadingText type="h2" style={{ marginBottom: 20 }}>
-            Recorded Trace
-          </HeadingText>
-          {records && records.length ? <TraceLine locations={records} /> : null}
-          <TextInput
-            label="Trace Name"
-            placeholder="Name this trace record"
-            onChangeText={setTraceName}
-            value={traceName}
-          />
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              marginTop: 20
-            }}>
-            <Button
-              label="Discard"
-              onPress={haandleDiscard}
-              style={{ flexGrow: 0.7, marginRight: 7 }}
+        <KeyboardAvoidingView
+          style={styles.formCard}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}>
+          <View style={{ paddingBottom: 30 }}>
+            <HeadingText type="h2" style={{ marginBottom: 10 }}>
+              Recorded Trace
+            </HeadingText>
+            {records && records.length ? <TraceLine locations={records} /> : null}
+            <TextInput
+              ref={refTraceNameInput}
+              label="Trace Name"
+              placeholder="Name this trace record"
+              onChangeText={setTraceName}
+              value={traceName}
             />
-            <Button label="Save" onPress={handleSave} style={{ flexGrow: 1, marginLeft: 7 }} />
+            <View style={styles.buttonWrapper}>
+              <Button
+                label="Discard"
+                icon="trash"
+                onPress={haandleDiscard}
+                style={{ flexGrow: 1, marginHorizontal: 2 }}
+              />
+              <Button
+                label="Save"
+                icon="save"
+                onPress={handleSave}
+                style={{ flexGrow: 1, marginHorizontal: 2 }}
+              />
+            </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     </Modal>
   );
@@ -76,11 +99,13 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0)"
   },
   formCard: {
-    height: 400,
     paddingTop: 15,
+    paddingBottom: 30,
     paddingHorizontal: 15,
-    backgroundColor: "#fff",
+    backgroundColor: COLOR_LIGHT.LIGHT,
     borderRadius: 16,
+    borderBottomStartRadius: 0,
+    borderBottomEndRadius: 0,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -90,20 +115,10 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
     elevation: 5
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
+  buttonWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    marginTop: 10
   }
 });
 
