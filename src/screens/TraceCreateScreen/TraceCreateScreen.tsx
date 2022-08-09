@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
 
 import { TracesSceneProps } from "@@types/navigations/scenes/traces";
@@ -22,11 +22,21 @@ const TraceCreateScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_CREATE>) => {
     startRecording,
     stopRecording
   } = useLocation();
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState<boolean>(false);
+
+  const buttonLabel = useMemo(() => {
+    if (isRecording) {
+      return "Stop Recording";
+    }
+    if (!isRecording && records.length) {
+      return "Continue Recording";
+    }
+    return "Record";
+  }, [isRecording, records]);
 
   const handleStopRecording = () => {
     stopRecording();
-    setIsVisible(true);
+    setIsSaving(true);
   };
 
   useEffect(() => {
@@ -44,23 +54,26 @@ const TraceCreateScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_CREATE>) => {
   return (
     <>
       <SaveRecordModal
-        isVisible={isVisible}
-        onRequestClose={() => setIsVisible(false)}
+        isVisible={isSaving}
+        onRequestClose={() => setIsSaving(false)}
         records={records}
       />
-      <Map showCurrentPoint showActionButtom actionWrapperStyle={{ bottom: 100 }}>
+      <Map showCurrentPoint showActionButtom actionWrapperStyle={{ bottom: 130 }}>
         {isRecording || (records && records.length) ? <TraceLine locations={records} /> : null}
       </Map>
       {!error ? (
         <View style={styles.recordButtonWrapper}>
           <Button
-            label={isRecording ? "Stop Recording" : "Record"}
+            label={buttonLabel}
             icon={isRecording ? "stop-circle" : "compass"}
             onPress={isRecording ? handleStopRecording : startRecording}
             buttonStyle={
               isRecording ? { backgroundColor: COLOR_LIGHT.TRANSPARENT_PRIMARY } : undefined
             }
           />
+          {!isRecording && records.length ? (
+            <Button label="Save" icon="save" onPress={() => setIsSaving(true)} />
+          ) : null}
         </View>
       ) : null}
     </>
