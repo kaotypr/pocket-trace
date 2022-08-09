@@ -82,6 +82,7 @@ exports[`screens/SignupScreen should match snapshot 1`] = `
             onChangeText={[Function]}
             onFocus={[Function]}
             placeholder="Name"
+            placeholderTextColor="#5145a0"
             secureTextEntry={false}
             style={
               Object {
@@ -138,6 +139,7 @@ exports[`screens/SignupScreen should match snapshot 1`] = `
             onChangeText={[Function]}
             onFocus={[Function]}
             placeholder="Email"
+            placeholderTextColor="#5145a0"
             secureTextEntry={false}
             style={
               Object {
@@ -195,6 +197,7 @@ exports[`screens/SignupScreen should match snapshot 1`] = `
             onChangeText={[Function]}
             onFocus={[Function]}
             placeholder="Password"
+            placeholderTextColor="#5145a0"
             secureTextEntry={true}
             style={
               Object {

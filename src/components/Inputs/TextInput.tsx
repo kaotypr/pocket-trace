@@ -1,5 +1,5 @@
 import { Feather } from "@expo/vector-icons";
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,63 +16,71 @@ interface ITextInputProps extends Omit<RNTextInputProps, "style"> {
   clearable?: boolean;
 }
 
-const TextInput = ({
-  value = "",
-  onChangeText,
-  label,
-  clearable,
-  secureTextEntry = false,
-  ...inputProps
-}: ITextInputProps) => {
-  const [isFocus, setIsFocus] = useState<boolean>(false);
-  const [isSecureText, setIsSecureText] = useState<boolean>(secureTextEntry);
+const TextInput = forwardRef(
+  (
+    {
+      value = "",
+      onChangeText,
+      label,
+      clearable,
+      secureTextEntry = false,
+      ...inputProps
+    }: ITextInputProps,
+    ref: any
+  ) => {
+    const [isFocus, setIsFocus] = useState<boolean>(false);
+    const [isSecureText, setIsSecureText] = useState<boolean>(secureTextEntry);
 
-  const clear = () => {
-    if (onChangeText) {
-      onChangeText("");
-    }
-  };
+    const clear = () => {
+      if (onChangeText) {
+        onChangeText("");
+      }
+    };
 
-  const toggleSecureText = () => {
-    setIsSecureText((prevIsSecureText) => !prevIsSecureText);
-  };
+    const toggleSecureText = () => {
+      setIsSecureText((prevIsSecureText) => !prevIsSecureText);
+    };
 
-  const toggleFocus = () => {
-    setIsFocus((prevIsFocus) => !prevIsFocus);
-  };
+    const toggleFocus = () => {
+      setIsFocus((prevIsFocus) => !prevIsFocus);
+    };
 
-  return (
-    <View style={styles.field}>
-      {label ? <Text style={styles.label}>{label}</Text> : null}
-      <View style={StyleSheet.flatten([styles.inputWrapper, isFocus && styles.inputWrapper_focus])}>
-        <RNTextInput
-          autoCorrect={false}
-          autoCapitalize="none"
-          placeholder={label}
-          onFocus={toggleFocus}
-          onBlur={toggleFocus}
-          onChangeText={onChangeText}
-          secureTextEntry={isSecureText}
-          value={value}
-          {...inputProps}
-          style={styles.input}
-        />
-        {clearable && value && !secureTextEntry ? (
-          <TouchableOpacity style={styles.iconWrapper} onPress={clear}>
-            <Feather style={styles.icon} name="x-circle" />
-          </TouchableOpacity>
-        ) : null}
-        {value && secureTextEntry ? (
-          <View style={styles.iconWrapper}>
-            <TouchableOpacity onPress={toggleSecureText}>
-              <Feather style={styles.icon} name={isSecureText ? "eye" : "eye-off"} />
+    return (
+      <View style={styles.field}>
+        {label ? <Text style={styles.label}>{label}</Text> : null}
+        <View
+          style={StyleSheet.flatten([styles.inputWrapper, isFocus && styles.inputWrapper_focus])}>
+          <RNTextInput
+            ref={ref}
+            autoCorrect={false}
+            autoCapitalize="none"
+            placeholder={label}
+            onFocus={toggleFocus}
+            onBlur={toggleFocus}
+            onChangeText={onChangeText}
+            secureTextEntry={isSecureText}
+            value={value}
+            {...inputProps}
+            style={styles.input}
+            placeholderTextColor={COLOR_LIGHT.PRIMARY}
+          />
+          {clearable && value && !secureTextEntry ? (
+            <TouchableOpacity style={styles.iconWrapper} onPress={clear}>
+              <Feather style={styles.icon} name="x-circle" />
             </TouchableOpacity>
-          </View>
-        ) : null}
+          ) : null}
+          {value && secureTextEntry ? (
+            <View style={styles.iconWrapper}>
+              <TouchableOpacity onPress={toggleSecureText}>
+                <Feather style={styles.icon} name={isSecureText ? "eye" : "eye-off"} />
+              </TouchableOpacity>
+            </View>
+          ) : null}
+        </View>
       </View>
-    </View>
-  );
-};
+    );
+  }
+);
 
 const styles = StyleSheet.create({
   field: {

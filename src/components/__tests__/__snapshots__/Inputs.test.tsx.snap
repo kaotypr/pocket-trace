@@ -41,6 +41,7 @@ exports[`components/Inputs/TextInput renders correctly 1`] = `
       onBlur={[Function]}
       onFocus={[Function]}
       placeholder="Text Input"
+      placeholderTextColor="#5145a0"
       secureTextEntry={false}
       style={
         Object {
