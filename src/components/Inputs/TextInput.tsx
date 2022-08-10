@@ -62,7 +62,7 @@ const TextInput = forwardRef(
             value={value}
             {...inputProps}
             style={styles.input}
-            placeholderTextColor={COLOR_LIGHT.PRIMARY}
+            placeholderTextColor={COLOR_LIGHT.TRANSPARENT_PRIMARY}
           />
           {clearable && value && !secureTextEntry ? (
             <TouchableOpacity style={styles.iconWrapper} onPress={clear}>
