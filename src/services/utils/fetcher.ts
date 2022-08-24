@@ -1,8 +1,8 @@
 class Fetcher {
   #baseUrl: string;
-  #config: Partial<RequestInit> = {};
+  #config: { [keys: string]: any } = {};
 
-  constructor(baseUrl: string = "", config: Partial<RequestInit> = {}) {
+  constructor(baseUrl: string = "", config: { [keys: string]: any } = {}) {
     this.#baseUrl = baseUrl;
     const { headers: passedHeaders } = config;
     const headers = { ...passedHeaders, "Content-Type": "application/json" };
