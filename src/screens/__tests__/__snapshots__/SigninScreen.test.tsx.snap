@@ -254,7 +254,6 @@ exports[`screens/SigninScreen should match snapshot 1`] = `
             ]
           }
         >
-          <Text />
           <Text
             style={
               Array [
