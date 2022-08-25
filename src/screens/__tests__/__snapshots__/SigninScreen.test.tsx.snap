@@ -142,6 +142,7 @@ exports[`screens/SigninScreen should match snapshot 1`] = `
             onChangeText={[Function]}
             onFocus={[Function]}
             placeholder="Email"
+            placeholderTextColor="rgba(81, 69, 160, 0.7)"
             secureTextEntry={false}
             style={
               Object {
@@ -199,6 +200,7 @@ exports[`screens/SigninScreen should match snapshot 1`] = `
             onChangeText={[Function]}
             onFocus={[Function]}
             placeholder="Password"
+            placeholderTextColor="rgba(81, 69, 160, 0.7)"
             secureTextEntry={true}
             style={
               Object {

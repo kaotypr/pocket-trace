@@ -8,3 +8,8 @@ export const ERROR_MESSAGE = {
     `You need to allow location access in order to use this app.\n` +
     `Go to Setttings > ${APP_NAME} > Location > Allow location access`
 };
+
+export const SUCCESS_MESSAGE = {
+  default: "Action done successfuly",
+  trace_created: "Successfully create new trace"
+};

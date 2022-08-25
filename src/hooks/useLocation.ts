@@ -20,6 +20,8 @@ const useLocation = () => {
     resetLocationState
   } = useLocationContext();
   const [locationSubsriber, setLocationSubscriber] = useState<LocationSubscription | null>(null);
+  const [recordLocationSubscriber, setRecordLocationSubscriber] =
+    useState<LocationSubscription | null>(null);
   const [isRecording, setIsRecording] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined | null>();
 
@@ -51,7 +53,11 @@ const useLocation = () => {
         },
         (location) => setLocationState(location, shouldRecord)
       );
-      setLocationSubscriber(subscriber);
+      if (shouldRecord) {
+        setRecordLocationSubscriber(subscriber);
+      } else {
+        setLocationSubscriber(subscriber);
+      }
     } catch (error) {
       setError(error as Error);
     }
@@ -73,8 +79,11 @@ const useLocation = () => {
   };
 
   const stopRecording = () => {
-    // stop watching
-    stopWatching();
+    // stop recordLocation watching
+    if (recordLocationSubscriber) {
+      recordLocationSubscriber.remove();
+      setRecordLocationSubscriber(null);
+    }
     setIsRecording(false);
     // watching location without recording, so it still updating current location indicator
     startWatching();
