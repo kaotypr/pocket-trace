@@ -11,5 +11,5 @@ export const ERROR_MESSAGE = {
 
 export const SUCCESS_MESSAGE = {
   default: "Action done successfuly",
-  trace_created: "Successfully created new trace"
+  trace_created: "Successfully create new trace"
 };

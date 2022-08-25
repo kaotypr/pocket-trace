@@ -4,10 +4,11 @@ import { Alert, StyleSheet, View } from "react-native";
 import { TracesSceneProps } from "@@types/navigations/scenes/traces";
 import { Button } from "@components/Buttons";
 import Map from "@components/Map";
+import { SuccessModal } from "@components/Modals";
 import TraceLine from "@components/TraceLine";
 import useLocation from "@hooks/useLocation";
 import { COLOR_LIGHT } from "@services/constants/color";
-import { ERROR_MESSAGE } from "@services/constants/message";
+import { ERROR_MESSAGE, SUCCESS_MESSAGE } from "@services/constants/message";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
 import SaveRecordModal from "./components/SaveRecordModal";
@@ -23,6 +24,7 @@ const TraceCreateScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_CREATE>) => {
     stopRecording
   } = useLocation();
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [isSaved, setIsSaved] = useState<boolean>(false);
 
   const buttonLabel = useMemo(() => {
     if (isRecording) {
@@ -57,6 +59,12 @@ const TraceCreateScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_CREATE>) => {
         isVisible={isSaving}
         onRequestClose={() => setIsSaving(false)}
         records={records}
+        onSaved={() => setIsSaved(true)}
+      />
+      <SuccessModal
+        isVisible={isSaved}
+        onRequestClose={() => setIsSaved(false)}
+        message={SUCCESS_MESSAGE.trace_created}
       />
       <Map showCurrentPoint showActionButtom actionWrapperStyle={{ bottom: 130 }}>
         {isRecording || (records && records.length) ? <TraceLine locations={records} /> : null}

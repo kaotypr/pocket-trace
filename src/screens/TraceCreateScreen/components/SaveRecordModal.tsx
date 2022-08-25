@@ -16,31 +16,41 @@ import { HeadingText } from "@components/Texts";
 import TraceLine from "@components/TraceLine";
 import useTrace from "@hooks/useTrace";
 import { COLOR_LIGHT } from "@services/constants/color";
-import { ERROR_MESSAGE } from "@services/constants/message";
 
 interface ISaveRecordModalProps {
   isVisible: boolean;
   onRequestClose: () => void;
+  onSaved: () => void;
   records?: any[];
 }
 
-const SaveRecordModal = ({ isVisible, records, onRequestClose }: ISaveRecordModalProps) => {
+const SaveRecordModal = ({
+  isVisible,
+  records,
+  onRequestClose,
+  onSaved
+}: ISaveRecordModalProps) => {
   const [traceName, setTraceName] = useState<string>("");
-  const { saveTrace, discardRecordedTraces } = useTrace();
+  const { saveTrace, discardRecordedTraces, isSaving } = useTrace();
   const refTraceNameInput = useRef<RNTextInput>();
 
   const handleSave = async () => {
     if (records) {
       try {
         await saveTrace(traceName, records);
+        discardRecordedTraces();
+        onRequestClose();
+        setTraceName("");
+        onSaved();
       } catch (error) {
         const { message } = error as Error;
-        Alert.alert(message, ERROR_MESSAGE.default);
+        Alert.alert("", message);
       }
     }
   };
 
   const haandleDiscard = () => {
+    setTraceName("");
     discardRecordedTraces();
     onRequestClose();
   };
@@ -52,44 +62,49 @@ const SaveRecordModal = ({ isVisible, records, onRequestClose }: ISaveRecordModa
   }, [isVisible]);
 
   return (
-    <Modal animationType="slide" transparent visible={isVisible} onRequestClose={onRequestClose}>
-      <View style={styles.wrapper}>
-        <TouchableWithoutFeedback onPress={onRequestClose}>
-          <View style={{ flex: 1 }} />
-        </TouchableWithoutFeedback>
-        <KeyboardAvoidingView
-          style={styles.formCard}
-          behavior={Platform.OS === "ios" ? "padding" : "height"}>
-          <View style={{ paddingBottom: 30 }}>
-            <HeadingText type="h2" style={{ marginBottom: 10 }}>
-              Recorded Trace
-            </HeadingText>
-            {records && records.length ? <TraceLine locations={records} /> : null}
-            <TextInput
-              ref={refTraceNameInput}
-              label="Trace Name"
-              placeholder="Name this trace record"
-              onChangeText={setTraceName}
-              value={traceName}
-            />
-            <View style={styles.buttonWrapper}>
-              <Button
-                label="Discard"
-                icon="trash"
-                onPress={haandleDiscard}
-                style={{ flexGrow: 1, marginHorizontal: 2 }}
+    <>
+      <Modal animationType="slide" transparent visible={isVisible} onRequestClose={onRequestClose}>
+        <View style={styles.wrapper}>
+          <TouchableWithoutFeedback onPress={onRequestClose}>
+            <View style={{ flex: 1 }} />
+          </TouchableWithoutFeedback>
+          <KeyboardAvoidingView
+            style={styles.formCard}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}>
+            <View style={{ paddingBottom: 30 }}>
+              <HeadingText type="h2" style={{ marginBottom: 10 }}>
+                Save Recorded Trace
+              </HeadingText>
+              {records && records.length ? <TraceLine locations={records} /> : null}
+              <TextInput
+                ref={refTraceNameInput}
+                label="Trace Name"
+                placeholder="name this recorded trace"
+                onChangeText={setTraceName}
+                value={traceName}
+                editable={!isSaving}
               />
-              <Button
-                label="Save"
-                icon="save"
-                onPress={handleSave}
-                style={{ flexGrow: 1, marginHorizontal: 2 }}
-              />
+              <View style={styles.buttonWrapper}>
+                <Button
+                  label="Discard"
+                  icon="trash"
+                  disabled={isSaving}
+                  onPress={haandleDiscard}
+                  style={{ flexGrow: 0.8, marginHorizontal: 2 }}
+                />
+                <Button
+                  label="Save"
+                  icon="save"
+                  disabled={isSaving}
+                  onPress={handleSave}
+                  style={{ flexGrow: 1, marginHorizontal: 2 }}
+                />
+              </View>
             </View>
-          </View>
-        </KeyboardAvoidingView>
-      </View>
-    </Modal>
+          </KeyboardAvoidingView>
+        </View>
+      </Modal>
+    </>
   );
 };
 
@@ -99,9 +114,9 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0)"
   },
   formCard: {
-    paddingTop: 15,
+    paddingTop: 20,
     paddingBottom: 30,
-    paddingHorizontal: 15,
+    paddingHorizontal: 20,
     backgroundColor: COLOR_LIGHT.LIGHT,
     borderRadius: 16,
     borderBottomStartRadius: 0,
