@@ -4,7 +4,8 @@ import Fetcher from "../fetcher";
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
-    json: () => Promise.resolve({ status: 200 })
+    json: () => Promise.resolve({ status: 200 }),
+    status: 200
   })
 ) as jest.Mock;
 
