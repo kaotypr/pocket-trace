@@ -1,18 +1,27 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useLocationContext } from "@contexts/locationContext";
 import { TRACE_API } from "@services/apis/api";
 import { APP_API_BASE_URL } from "@services/constants/extra";
-import { ASYNC_STORAGE_KEYS } from "@services/constants/storage";
 import Fetcher from "@services/utils/fetcher";
 
+import useAuth from "./useAuth";
+
 const useTrace = () => {
+  const { token } = useAuth();
   const [error, setError] = useState<Error | undefined | null>();
   const { setLocationState } = useLocationContext();
-  const [traces, setTraces] = useState([]);
-  const [fetcher, setFetcher] = useState<Fetcher>(new Fetcher(APP_API_BASE_URL));
+  const [traces, setTraces] = useState<Trace[]>([]);
   const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+
+  const fetcher = useMemo(() => {
+    return new Fetcher(APP_API_BASE_URL, {
+      headers: {
+        Authorization: token
+      }
+    });
+  }, []);
 
   const saveTrace = async (name: string, recordedLocations: any[]): Promise<any> => {
     setIsSaving(true);
@@ -30,12 +39,15 @@ const useTrace = () => {
 
   const fetchTraces = async () => {
     try {
-      const { data } = await fetcher.get(TRACE_API);
-      setTraces(data);
+      setIsFetching(true);
+      const res: Trace[] = await fetcher.get(TRACE_API);
+      setTraces(res);
       setLocationState({ records: [] });
       setError(null);
     } catch (error) {
       setError(error as Error);
+    } finally {
+      setIsFetching(false);
     }
   };
 
@@ -43,22 +55,7 @@ const useTrace = () => {
     setLocationState({ records: [] });
   };
 
-  useEffect(() => {
-    const setAuthToken = async () => {
-      return await AsyncStorage.getItem(ASYNC_STORAGE_KEYS.TOKEN).then((token) => {
-        setFetcher(
-          new Fetcher(APP_API_BASE_URL, {
-            headers: {
-              Authorization: token
-            }
-          })
-        );
-      });
-    };
-    setAuthToken();
-  }, []);
-
-  return { error, traces, isSaving, saveTrace, discardRecordedTraces, fetchTraces };
+  return { error, traces, isSaving, isFetching, saveTrace, discardRecordedTraces, fetchTraces };
 };
 
 export default useTrace;
