@@ -1,6 +1,6 @@
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { Alert, StyleSheet, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import { TracesSceneStackParamList } from "@@types/navigations/scenes/traces";
@@ -11,9 +11,26 @@ import { SCREEN_NAMES } from "@services/constants/screen";
 
 interface ITraceListItemProps {
   data: Trace;
+  deleteTrace: (id: string) => Promise<any>;
+  reloadTraces: () => void;
 }
 
-const TraceListItem = ({ data: { _id = "", name } }: ITraceListItemProps) => {
+const TraceListItem = ({
+  data: { _id = "", name },
+  reloadTraces,
+  deleteTrace
+}: ITraceListItemProps) => {
+  const handleDeleteTrace = async () => {
+    try {
+      await deleteTrace(_id);
+      Alert.alert("Success", `Trace ${name} has been deleted`);
+      reloadTraces();
+    } catch (error) {
+      const { message } = error as Error;
+      Alert.alert("", message);
+    }
+  };
+
   const { navigate } = useNavigation<NavigationProp<TracesSceneStackParamList>>();
   return (
     <View style={styles.wrapper}>
@@ -33,6 +50,7 @@ const TraceListItem = ({ data: { _id = "", name } }: ITraceListItemProps) => {
         label=""
         iconStyle={{ marginRight: 0 }}
         buttonStyle={{ padding: 0 }}
+        onPress={handleDeleteTrace}
       />
     </View>
   );

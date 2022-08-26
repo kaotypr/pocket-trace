@@ -8,7 +8,7 @@ import useTrace from "@hooks/useTrace";
 import { SCREEN_NAMES } from "@services/constants/screen";
 
 const TraceListScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_LIST>) => {
-  const { traces, isFetching, fetchTraces } = useTrace();
+  const { traces, isFetching, fetchTraces, deleteTrace } = useTrace();
 
   useEffect(() => {
     fetchTraces();
@@ -20,7 +20,9 @@ const TraceListScreen = (_: TracesSceneProps<SCREEN_NAMES.TRACE_LIST>) => {
         style={{ marginTop: 10 }}
         data={traces as Trace[] | []}
         keyExtractor={(item, index) => `${item._id}_index${index}`}
-        renderItem={({ item }) => <TraceListIItem data={item} />}
+        renderItem={({ item }) => (
+          <TraceListIItem data={item} reloadTraces={fetchTraces} deleteTrace={deleteTrace} />
+        )}
         ListEmptyComponent={() => (isFetching ? <ActivityIndicator /> : <TraceListItemEmpty />)}
         onRefresh={fetchTraces}
         refreshing={isFetching}

@@ -72,6 +72,15 @@ const useTrace = () => {
     return null;
   };
 
+  const deleteTrace = async (traceId: string) => {
+    try {
+      const apiURL = `${TRACE_API}/${traceId}`;
+      return await fetcher.delete(apiURL);
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  };
+
   const discardRecordedTraces = () => {
     setLocationState({ records: [] });
   };
@@ -84,7 +93,8 @@ const useTrace = () => {
     saveTrace,
     discardRecordedTraces,
     fetchTraces,
-    fetchDetailTrace
+    fetchDetailTrace,
+    deleteTrace
   };
 };
 
