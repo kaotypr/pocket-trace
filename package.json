@@ -17,6 +17,8 @@
     "test:watch": "jest --watchAll"
   },
   "jest": {
+    "timers": "fake",
+    "testEnvironment": "jsdom",
     "preset": "jest-expo",
     "moduleFileExtensions": [
       "ts",
