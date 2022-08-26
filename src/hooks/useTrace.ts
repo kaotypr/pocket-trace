@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Alert } from "react-native";
 
 import { useLocationContext } from "@contexts/locationContext";
 import { TRACE_API } from "@services/apis/api";
@@ -45,17 +46,46 @@ const useTrace = () => {
       setLocationState({ records: [] });
       setError(null);
     } catch (error) {
+      const { message } = error as Error;
+      Alert.alert("", message);
       setError(error as Error);
     } finally {
       setIsFetching(false);
     }
   };
 
+  const fetchDetailTrace = async (traceId: string | null): Promise<Trace | null> => {
+    if (traceId) {
+      try {
+        setIsFetching(true);
+        const apiURL = `${TRACE_API}/${traceId}`;
+        const res: Trace = await fetcher.get(apiURL);
+        return res;
+      } catch (error) {
+        const { message } = error as Error;
+        Alert.alert("", message);
+        setError(error as Error);
+      } finally {
+        setIsFetching(false);
+      }
+    }
+    return null;
+  };
+
   const discardRecordedTraces = () => {
     setLocationState({ records: [] });
   };
 
-  return { error, traces, isSaving, isFetching, saveTrace, discardRecordedTraces, fetchTraces };
+  return {
+    error,
+    traces,
+    isSaving,
+    isFetching,
+    saveTrace,
+    discardRecordedTraces,
+    fetchTraces,
+    fetchDetailTrace
+  };
 };
 
 export default useTrace;

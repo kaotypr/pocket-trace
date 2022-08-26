@@ -5,6 +5,8 @@ interface TraceLocationCoords {
   accuracy: number;
   latitude: number;
   altitude: number;
+  latitudeDelta?: number;
+  longitudeDelta?: number;
 }
 
 interface TraceLocation {

@@ -20,7 +20,7 @@ const AppNavigation = () => {
           name={SCREEN_NAMES.TRACES_LIST_SCENE}
           component={TraceListSceneNavigation}
           options={{
-            headerTitle: CUSTOM_HEADER_TITLE.TRACES,
+            headerShown: false,
             tabBarIcon: (tabBarProps) => <TabBarIcon name="layers" {...tabBarProps} />,
             tabBarLabel: (tabBarProps) => (
               <TabBarLabel label={CUSTOM_HEADER_TITLE.TRACES} {...tabBarProps} />
